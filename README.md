@@ -1,4 +1,4 @@
-Dieses Script aktualisiert ein oder mehrere Freifunk-Router per SSH
+<pre>Dieses Script aktualisiert ein oder mehrere Freifunk-Router per SSH
 Auf den Routern muss SSH aktiviert und ein Passwort oder SSH-Key eingerichtet sein. Keyfiles und ein SSH-Agent werden dringend empfohlen!
 Es wird ausschließlich IP (IPv6) unterstützt, IP-legacy (IPv4) ist nicht supported.
 Die Firmwaredatei kann entweder manuell angegeben oder anhand des Routers automatisch gewählt werden
