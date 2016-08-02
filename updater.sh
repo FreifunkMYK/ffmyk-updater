@@ -253,8 +253,7 @@ function update_gethw () {
 	if [ $verbose -gt 0 ]; then
 		echo -ne "${gelb}  Ermittle Hardware...${normal}"
 	fi
-	#curhw=`$ssh "${user}@${i}" "cat /proc/cpuinfo | grep machine"  | cut -d ':' -f 2 | sed -e 's/^[[:space:]]*//'`
-	curhw="TP-Link TL-WDR4300 v1"
+	curhw=`$ssh "${user}@${i}" "cat /proc/cpuinfo | grep machine"  | cut -d ':' -f 2 | sed -e 's/^[[:space:]]*//'`
 	if [ $verbose -gt 0 ]; then
 		echo -e "${gelb}${curhw}${normal}"
 	fi
