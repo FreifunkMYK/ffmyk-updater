@@ -270,7 +270,7 @@ function update_fwfind () {
 	if [ -z "$firmware" ]; then
 
 		#Suche neue Versionen
-		readarray -t upstream < <(${curl} "http://firmware.freifunk-myk.de/.static/filter/?branch%5B%5D=${branch}&output=feelinglucky&filter=$( rawurlencode "$curhw" ))"
+		readarray -t upstream < <(${curl} "http://firmware.freifunk-myk.de/.static/filter/?branch%5B%5D=${branch}&output=feelinglucky&filter=$( rawurlencode "$curhw" )")
 
 		upstream_version=`printf "%s" "${upstream[1]}"`
 		upstream_url=`printf "%s" "${upstream[0]}"`
