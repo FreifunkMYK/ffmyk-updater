@@ -247,13 +247,10 @@ function test ()
 
 function update_gethw () {
 	#Ermittle verwendete Hardware
-	#@TODO unzuverlässig - wirft z.B. TP-LINK TL-WDR3600/4300/4310
-	#      nodeinfo/respondd zeigt es richtig....
-	#      gluon-neighbour-info -d ::1 -p 1001 -t 1 -c 1 -r nodeinfo
 	if [ $verbose -gt 0 ]; then
 		echo -ne "${gelb}  Ermittle Hardware...${normal}"
 	fi
-	curhw=`$ssh "${user}@${i}" "cat /proc/cpuinfo | grep machine"  | cut -d ':' -f 2 | sed -e 's/^[[:space:]]*//'`
+	curhw=`$ssh "${user}@${i}" "lua -e 'print(require(\"platform_info\").get_image_name())'"`
 	if [ $verbose -gt 0 ]; then
 		echo -e "${gelb}${curhw}${normal}"
 	fi
@@ -273,7 +270,7 @@ function update_fwfind () {
 	if [ -z "$firmware" ]; then
 
 		#Suche neue Versionen
-		readarray -t upstream < <(${curl} "http://firmware.freifunk-myk.de/.static/filter/?branch%5B%5D=${branch}&output=feelinglucky&filter=$( rawurlencode "$curhw" )")
+		readarray -t upstream < <(${curl} "http://firmware.freifunk-myk.de/.static/filter/?branch%5B%5D=${branch}&output=feelinglucky&filter=$( rawurlencode "$curhw" ))"
 
 		upstream_version=`printf "%s" "${upstream[1]}"`
 		upstream_url=`printf "%s" "${upstream[0]}"`
