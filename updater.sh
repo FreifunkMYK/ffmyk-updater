@@ -50,7 +50,7 @@ Es wird ausschließlich IP (IPv6) unterstützt, IP-legacy (IPv4) ist nicht suppo
 Die Firmwaredatei kann entweder manuell angegeben oder anhand des Routers automatisch gewählt werden
 
 Aufruf:
-$0 [optionen] [-b stable | -f filename.bin] [-t routerlist.txt | -i ip]
+$0 [optionen] [-b stable | -f filename.bin] [-l routerlist.txt | -t ip]
 
 Optionen:
 -b, --branch      Update auf die letzte Firmware aus der Branch stable oder beta
