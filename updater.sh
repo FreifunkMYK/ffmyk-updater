@@ -22,6 +22,7 @@ branch=stable
 firmware=""
 parallel=0
 verbose=0
+wait=45
 ssh="ssh"
 ping=""
 ident=""
@@ -67,6 +68,7 @@ Optionen:
 -p, --parallel    Router in der Liste parallel aktualisieren
 -s, --sequential  Router in der Liste nacheinander aktualisieren (standard)
                   aka: Nächster Router erst wenn der aktuelle wieder pingbar ist
+-w, --wait        Wartezeit für Abschluss des Flash-Vorgangs (Standard: 45 Sekunden)
 
 -m, --nocolor     Keine Farben verwenden
 -v, --verbose     Ausführliche Ausgaben aktivieren, mehrfach für debug
@@ -135,6 +137,8 @@ while [ ! -z "$1" ]; do
 		-c | --continue ) cont=1 ;;
 		-p | --parallel )	parallel=1 ;;
 		-s | --sequential )	parallel=0 ;;
+		-w | --wait ) 	wait="$2"
+				shift ;;
 		-v | --verbose ) let verbose++ ;;
 		-m | --nocolor )
 			rot=""	#Rote Schrift
@@ -495,7 +499,8 @@ function update () {
 		flash_sysupgrade
 
 		if [ $parallel -eq 0 ];then
-			sleep 35 #Nach ca. 30 Sekunden sollte der Router mit den Neustart beginnen...
+			#@TODO Werte je nach Routermodell oder auf reboot via ping-loss warten
+			sleep $wait
 			flash_wait
 			flash_verify
 		fi
