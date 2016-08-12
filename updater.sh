@@ -6,7 +6,7 @@
 # - curl (Updatecheck, Firmwaresuche)
 
 # Konstanten
-version=20160801
+version=20160812
 
 rot="\033[22;31m"	#Rote Schrift
 gruen="\033[22;32m"	#Grüne Schrift
