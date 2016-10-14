@@ -235,7 +235,7 @@ function prepare ()
 		fi
 	fi
 
-	echo "" > ${tmp}/update.log
+	echo "" > ${temp}/update.log
 }
 
 #Diese Funktion überprüft verschiedene Einstellungen
@@ -394,7 +394,7 @@ function flash_sysupgrade () {
 	#$ssh "${user}@${i}" 'echo 3 > /proc/sys/vm/drop_caches ; (((sysupgrade /tmp/update.bin)&)&) ; exit' > /dev/null
 
 	#@TODO funktioniert vermutlich nicht mit passwort-auth...
-	$ssh "${user}@${i}" 'echo 3 > /proc/sys/vm/drop_caches ; sysupgrade /tmp/update.bin' >> ${tmp}/update.log &
+	$ssh "${user}@${i}" 'echo 3 > /proc/sys/vm/drop_caches ; sysupgrade /tmp/update.bin' >> ${temp}/update.log &
 
 	if [ $verbose -gt 0 ]; then
 		echo -e "${gruen}OK${normal}"
@@ -444,7 +444,7 @@ function flash_abort () {
 	if [ $verbose -gt 0 ]; then
 		echo -ne "  ${gelb}  Update auf Router ${i} wird abgebrochen...${normal}"
 	fi
-	$ssh "${user}@${i}" 'rm /tmp/update.bin' >> ${tmp}/update.log
+	$ssh "${user}@${i}" 'rm /tmp/update.bin' >> ${temp}/update.log
 	if [ $verbose -gt 0 ]; then
 		echo -e "${gruen}OK${normal}"
 	fi
